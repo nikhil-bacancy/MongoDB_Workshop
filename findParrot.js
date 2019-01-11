@@ -37,7 +37,7 @@ var findDocuments = function(db, callback) {
     }).toArray(function(err,docs){
         if (err) throw err;
         console.log(docs);
-        callback;
+        callback();
     })
 
 }
@@ -48,7 +48,7 @@ MongoClient.connect(url, function(err, client){
     }
 
     findDocuments(client.db('learnyoumongo'), function(){
-        db.close();
+        client.close();
     });
 })
 
